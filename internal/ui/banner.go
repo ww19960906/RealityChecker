@@ -28,23 +28,17 @@ func PrintBanner() {
 
 	// 计算居中位置
 	versionPadding := (width - 2 - versionDisplayWidth) / 2
-	websitePadding := (width - 2 - websiteDisplayWidth) / 2
 
 	// 确保padding不为负数
 	if versionPadding < 0 { versionPadding = 0 }
-	if websitePadding < 0 { websitePadding = 0 }
 
 	// 计算右侧剩余空间
 	versionRightSpace := width - 2 - versionPadding - versionDisplayWidth
-	websiteRightSpace := width - 2 - websitePadding - websiteDisplayWidth
 
 	if versionRightSpace < 0 { versionRightSpace = 0 }
-	if websiteRightSpace < 0 { websiteRightSpace = 0 }
 
 	fmt.Printf("%s╔%s╗%s\n", white, strings.Repeat("═", width-2), reset)
 	fmt.Printf("%s║%s%s%s║%s\n", white, strings.Repeat(" ", versionPadding), versionText, strings.Repeat(" ", versionRightSpace), reset)
 	fmt.Printf("%s║%s║%s\n", white, strings.Repeat(" ", width-2), reset)
-	fmt.Printf("%s║%s%s%s%s%s║%s\n", white, strings.Repeat(" ", websitePadding), cyan, websiteText, reset, strings.Repeat(" ", websiteRightSpace), reset)
-	fmt.Printf("%s╚%s╝%s\n", white, strings.Repeat("═", width-2), reset)
 	fmt.Println("")
 }
