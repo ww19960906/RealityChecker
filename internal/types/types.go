@@ -44,13 +44,13 @@ func ClassifyStatusCode(statusCode int, accessible bool) string {
 
 	// 安全的状态码
 	switch statusCode {
-	case 200, 301, 302, 404:
+	case 200:
 		return StatusCodeCategorySafe
 	}
 
 	// 排除的状态码
 	switch statusCode {
-	case 401, 403, 407, 408, 429:
+	case 301, 302, 401, 403, 404, 407, 408, 429:
 		return StatusCodeCategoryExcluded
 	}
 
