@@ -19,7 +19,6 @@ func PrintBanner() {
 
 	// 计算版本信息长度，确保居中对齐
 	versionText := fmt.Sprintf("Reality协议目标网站检测工具 %s", versionInfo)
-	websiteText := "V2RaySSR 综合网"
 
 	// 横幅宽度（与表格保持一致）
 	width := 95
