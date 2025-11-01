@@ -231,29 +231,9 @@ func (tf *TableFormatter) calculateRecommendationStars(result *types.DetectionRe
 		stars++
 	}
 
-	// 2. 握手时间延迟小 (<= 200ms)
-	if result.TLS != nil && result.TLS.HandshakeTime > 0 {
-		handshakeMs := int(result.TLS.HandshakeTime.Milliseconds())
-		if handshakeMs <= 200 {
-			stars++
-		}
-	}
-
-	// 3. 没有CDN (不使用CDN更安全)
+	// 2. 没有CDN (不使用CDN更安全)
 	if result.CDN == nil || !result.CDN.IsCDN {
 		stars++
-	}
-
-	// 4. 不是热门网站 (热门网站不推荐作为Reality目标)
-	if result.CDN != nil && !result.CDN.IsHotWebsite {
-		stars++
-	}
-
-	// 5. 证书时间长 (>= 60天)
-	if result.Certificate != nil && result.Certificate.Valid {
-		if result.Certificate.DaysUntilExpiry >= 60 {
-			stars++
-		}
 	}
 
 	// 生成星级显示 - 只显示实际获得的星级
