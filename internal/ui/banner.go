@@ -25,7 +25,6 @@ func PrintBanner() {
 
 	// 计算字符显示宽度（中文字符占2个位置）
 	versionDisplayWidth := getDisplayWidth(versionText)
-	websiteDisplayWidth := getDisplayWidth(websiteText)
 
 	// 计算居中位置
 	versionPadding := (width - 2 - versionDisplayWidth) / 2
