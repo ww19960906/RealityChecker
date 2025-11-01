@@ -231,7 +231,15 @@ func (tf *TableFormatter) calculateRecommendationStars(result *types.DetectionRe
 		stars++
 	}
 
-	// 2. 没有CDN (不使用CDN更安全)
+	// 2. 握手时间延迟小 (<= 10ms)
+	if result.TLS != nil && result.TLS.HandshakeTime > 0 {
+		handshakeMs := int(result.TLS.HandshakeTime.Milliseconds())
+		if handshakeMs <= 10 {
+			stars++
+		}
+	}
+
+	// 3. 没有CDN (不使用CDN更安全)
 	if result.CDN == nil || !result.CDN.IsCDN {
 		stars++
 	}
