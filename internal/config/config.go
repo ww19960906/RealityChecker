@@ -93,6 +93,9 @@ func mergeConfig(defaultConfig *types.Config, fileConfig *types.Config) {
 	if fileConfig.Concurrency.MaxConcurrent > 0 {
 		defaultConfig.Concurrency.MaxConcurrent = fileConfig.Concurrency.MaxConcurrent
 	}
+	if fileConfig.Concurrency.MinConcurrent > 0 { //
+        defaultConfig.Concurrency.MinConcurrent = fileConfig.Concurrency.MinConcurrent
+    }
 	if fileConfig.Concurrency.CheckTimeout > 0 {
 		defaultConfig.Concurrency.CheckTimeout = fileConfig.Concurrency.CheckTimeout
 	}
