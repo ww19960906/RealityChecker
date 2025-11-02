@@ -125,7 +125,7 @@ func (bm *Manager) CheckDomainsWithProgress(ctx context.Context, domains []strin
 		var wg sync.WaitGroup
 
 		// 使用配置的最大并发数，提高检测效率
-		concurrency := int(bm.config.Concurrency.MaxConcurrent) // 使用配置的并发数（默认8个）
+		concurrency := int(bm.config.Concurrency.MinConcurrent) // 使用配置的并发数（Max8个, Min2个）
 		semaphore := make(chan struct{}, concurrency)
 
 		for i, domain := range domains {
@@ -165,7 +165,7 @@ func (bm *Manager) CheckDomainsWithProgress(ctx context.Context, domains []strin
 
 	// 收集结果并显示进度
 	completed := 0
-	timeout := time.NewTimer(15 * time.Second) // 添加15秒总超时
+	timeout := time.NewTimer(1200 * time.Second) // 添加1200秒总超时
 	defer timeout.Stop()
 
 	for completed < len(domains) {
