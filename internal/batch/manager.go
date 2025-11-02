@@ -434,5 +434,10 @@ func (bm *Manager) calculateStars(result *types.DetectionResult) int {
 		stars++
 	}
 
+	// 4. TLD加分 (.com 和 .net) - 新增逻辑
+	if strings.HasSuffix(result.Domain, ".com") || strings.HasSuffix(result.Domain, ".net") {
+		stars++
+	}
+
 	return stars
 }
