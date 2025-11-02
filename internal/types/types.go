@@ -351,6 +351,7 @@ type NetworkConfig struct {
 // ConcurrencyConfig 并发配置
 type ConcurrencyConfig struct {
 	MaxConcurrent int           `yaml:"max_concurrent"`
+	MinConcurrent int           `yaml:"min_concurrent"`
 	CheckTimeout  time.Duration `yaml:"check_timeout"`
 	CacheTTL      time.Duration `yaml:"cache_ttl"`
 }
