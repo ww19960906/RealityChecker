@@ -244,6 +244,12 @@ func (tf *TableFormatter) calculateRecommendationStars(result *types.DetectionRe
 		stars++
 	}
 
+
+	// 4. TLD加分 (.com 和 .net)
+	if strings.HasSuffix(result.Domain, ".com") || strings.HasSuffix(result.Domain, ".net") {
+		stars++
+	}
+
 	// 生成星级显示 - 只显示实际获得的星级
 	var starsText string
 	for i := 0; i < stars; i++ {
