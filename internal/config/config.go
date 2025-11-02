@@ -142,6 +142,7 @@ func getDefaultConfig() *types.Config {
 		},
 		Concurrency: types.ConcurrencyConfig{
 			MaxConcurrent: 8,
+			MinConcurrent: 1,
 			CheckTimeout:  3 * time.Second, // 减少到3秒
 			CacheTTL:      5 * time.Minute,
 		},
